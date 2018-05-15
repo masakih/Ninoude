@@ -1,0 +1,13 @@
+
+module Curl [system] {
+    link "curl"
+    umbrella header "/usr/include/curl/curl.h"
+    export *
+    module * { export * }
+}
+
+module CurlEasyWrapper [system] {
+    link "curl"
+    header "CurlEasyWrapper.h"
+    export *
+}
