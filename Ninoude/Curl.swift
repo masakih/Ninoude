@@ -172,11 +172,25 @@ class Curl {
         }
     }
     
+    // only use in perform()
+    // curl_easy_setuseragent用
+    /// headerにUAがあればcurl_easy_setuseragentに値を設定する必要がないのでnilを返す
+    /// UAがなければクラス変数のuseragentの値を返す
+    private func userAgent() -> UnsafePointer<Int8>? {
+        
+        if headers?["User-Agent"]?.cString(using: .utf8) == nil {
+            
+            return type(of: self).userAgent.cString(using: .utf8)
+        }
+        
+        return nil
+    }
+    
     func perform() -> Result<(HTTPURLResponse, Data)> {
         
-        if var useragent = type(of: self).userAgent.cString(using: .utf8) {
-            
-            curl_easy_setuseragent(curl, &useragent)
+        if var ua = userAgent() {
+        
+            curl_easy_setuseragent(curl, &ua)
         }
         
         var headerData = WriteData()
