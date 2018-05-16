@@ -30,7 +30,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             .futureResponse(queue: .main)
             .onSuccess { response in
                 
-                self.textView.string = response.data.flatMap { String(data: $0, encoding: .utf8) } ?? ""
+                self.textView.string = response.data.flatMap { String(data: $0, encoding: .utf8) } ?? "Decoding failed"
             }
             .onFailure { error in
                 
