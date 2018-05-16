@@ -23,10 +23,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBAction private func test(_: Any) {
         
-        var request = URLRequest(url: URL(string: "https://httpbin.org/headers")!)
+        var request = URLRequest(url: URL(string: "https://httpbin.org/absolute-redirect/3")!)
         request.addValue("Hoge", forHTTPHeaderField: "Hoge")
         
         Ninoude(request: request)
+            .didRedirect { newRequest, response in
+                
+                print("Response ->", response, "\nNew Request ->", newRequest)
+            }
             .futureResponse(queue: .main)
             .onSuccess { response in
                 

@@ -31,6 +31,8 @@ public class Ninoude {
     
     public let request: URLRequest
     
+    private var redirectFunctions: [(URLRequest, HTTPURLResponse) -> Void] = []
+    
     public init(queue: DispatchQueue = .global(), preference: NinoudePreference = .default, request: URLRequest) {
         
         self.taskQueue = queue
@@ -42,13 +44,95 @@ public class Ninoude {
     
     public func response() -> Result<Response> {
         
+        return response(for: request)
+    }
+    
+    public func futureResponse(queue: DispatchQueue = .global()) -> Future<Response> {
+        
+        let promise = Promise<Response>()
+        
+        taskQueue.async {
+            
+            let result = self.response()
+            
+            queue.sync { promise.complete(result) }
+        }
+        
+        return promise.future
+    }
+    
+    public func didRedirect(_ f: @escaping (URLRequest, HTTPURLResponse) -> Void) -> Self {
+        
+        redirectFunctions.append(f)
+        
+        return self
+    }
+    
+    private func isRedirect(response: Response) -> Bool {
+        
+        guard let status = response.response?.statusCode else {
+            
+            return false
+        }
+        
+        switch status {
+            
+        case 301, 302, 303, 307, 308:  return true
+            
+        default: return false
+        }
+    }
+    
+    private func redirectURL(from original: URL, for location: String) -> URL? {
+        
+        if location.hasPrefix("http"),
+            let url = URL(string: location) {
+            
+            return url
+        }
+        
+        if location.hasPrefix("/") {
+            
+            var newURL = original
+            let paths = newURL.pathComponents
+            
+            (1..<paths.count).forEach { _ in newURL.deleteLastPathComponent() }
+            
+            newURL.appendPathComponent(String(location.dropFirst()))
+            
+            return newURL
+        }
+        
+        return URL(string: location, relativeTo: original)
+    }
+    
+    private func redirectIfNeeds(response: Response) -> Result<Response> {
+        
+        if self.isRedirect(response: response),
+            let newLocation = response.response?.allHeaderFields["Location"] as? String,
+            let originalURL = response.request?.url,
+            let newURL = redirectURL(from: originalURL, for: newLocation) {
+            
+            let newRequest = URLRequest(url: newURL)
+            
+            redirectFunctions.forEach { $0(newRequest, response.response!) }
+            
+            return self.response(for: newRequest)
+        }
+        
+        return Result(response)
+    }
+    
+    private func response(for request: URLRequest) -> Result<Response> {
+        
         if let cachedResponse = preference.cache.validCache(for: request) {
             
             let result = Response(request: request,
-                                    response: cachedResponse.response as? HTTPURLResponse,
-                                    data: cachedResponse.data)
+                                  response: cachedResponse.response as? HTTPURLResponse,
+                                  data: cachedResponse.data)
             
             return Result(result)
+                .flatMap(transform: self.redirectIfNeeds(response:))
         }
         
         Curl.userAgent = type(of: self).userAgent
@@ -70,20 +154,7 @@ public class Ninoude {
             .map { (response, data) in
                 
                 Response(request: request, response: response, data: data)
-        }
-    }
-    
-    public func futureResponse(queue: DispatchQueue = .global()) -> Future<Response> {
-        
-        let promise = Promise<Response>()
-        
-        taskQueue.async {
-            
-            let result = self.response()
-            
-            queue.sync { promise.complete(result) }
-        }
-        
-        return promise.future
+            }
+            .flatMap(transform: self.redirectIfNeeds(response:))
     }
 }
