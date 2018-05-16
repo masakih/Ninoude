@@ -176,7 +176,7 @@ class Curl {
     // curl_easy_setuseragent用
     /// headerにUAがあればcurl_easy_setuseragentに値を設定する必要がないのでnilを返す
     /// UAがなければクラス変数のuseragentの値を返す
-    private func userAgent() -> UnsafePointer<Int8>? {
+    private func userAgent() -> [Int8]? {
         
         if headers?["User-Agent"]?.cString(using: .utf8) == nil {
             
