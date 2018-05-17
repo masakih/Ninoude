@@ -8,6 +8,7 @@ let request = URLRequest(url: URL(string: "https://httpbin.org/")!)
 
 // asyncronus access
 Ninoude(request: request)
+    .didRedirect { newRequest, response in print("Response ->", response, "\nredirect to ->", newRequest) }
     .futureResponse(queue: .main)
     .onSuccess { response in
         
@@ -20,6 +21,7 @@ Ninoude(request: request)
 
 // syncronus access
 Ninoude(request: request)
+    .didRedirect { newRequest, response in print("Response ->", response, "\nredirect to ->", newRequest) }
     .response()
     .ifValue { response in
         
