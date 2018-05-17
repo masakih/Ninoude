@@ -224,7 +224,7 @@ class Chikarakobu {
     }
 }
 
-func writeData(rawData: UnsafeMutablePointer<Int8>?, unitSize: Int, unitCount: Int, stream: UnsafeMutableRawPointer?) -> Int {
+private func writeData(rawData: UnsafeMutablePointer<Int8>?, unitSize: Int, unitCount: Int, stream: UnsafeMutableRawPointer?) -> Int {
     
     let size = unitSize * unitCount
     
@@ -243,7 +243,7 @@ func writeData(rawData: UnsafeMutablePointer<Int8>?, unitSize: Int, unitCount: I
     return size
 }
 
-func parseHeader(data: Data) -> (version: String, status: Int, fields: [String: String])? {
+private func parseHeader(data: Data) -> (version: String, status: Int, fields: [String: String])? {
     
     guard let header = String(data: data, encoding: .utf8)?.split(separator: "\r\n") else {
         
@@ -272,7 +272,7 @@ func parseHeader(data: Data) -> (version: String, status: Int, fields: [String: 
     return (version: httpVersion, status: httpStatus, fields: headers)
 }
 
-func parseHeaderFields(header: String) -> [String: String] {
+private func parseHeaderFields(header: String) -> [String: String] {
     
     let keyValue = header.split(separator: ":", maxSplits: 1, omittingEmptySubsequences: false)
     
