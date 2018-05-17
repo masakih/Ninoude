@@ -8,7 +8,7 @@
 
 import Foundation
 
-import CurlEasyWrapper
+import CurlWrapper
 
 
 enum CurlError: Error {

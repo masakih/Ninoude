@@ -6,8 +6,8 @@ module Curl [system] {
     module * { export * }
 }
 
-module CurlEasyWrapper [system] {
+module CurlWrapper [system] {
     link "curl"
-    header "CurlEasyWrapper.h"
+    header "CurlWrapper.h"
     export *
 }

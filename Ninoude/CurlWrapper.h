@@ -1,6 +1,6 @@
 //
-//  CurlEasyWrapper.h
-//  CurlEasyWrapper
+//  CurlWrapper.h
+//  CurlWrapper
 //
 //  Created by Hori,Masaki on 2018/05/05.
 //  Copyright © 2018年 Hori,Masaki. All rights reserved.

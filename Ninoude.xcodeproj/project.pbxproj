@@ -12,7 +12,7 @@
 		F49055AF20A7BDE500CF637D /* Ninoude.h in Headers */ = {isa = PBXBuildFile; fileRef = F49055A120A7BDE500CF637D /* Ninoude.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F49055CA20A7BED200CF637D /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49055C920A7BED200CF637D /* Result.swift */; };
 		F49055CC20A7BED900CF637D /* Curl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49055CB20A7BED900CF637D /* Curl.swift */; };
-		F49055D620A833A600CF637D /* CurlEasyWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = F49055C220A7BE5500CF637D /* CurlEasyWrapper.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		F49055D620A833A600CF637D /* CurlWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = F49055C220A7BE5500CF637D /* CurlWrapper.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		F49055DE20A8379B00CF637D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49055DD20A8379B00CF637D /* AppDelegate.swift */; };
 		F49055E020A8379C00CF637D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F49055DF20A8379C00CF637D /* Assets.xcassets */; };
 		F49055E320A8379C00CF637D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F49055E120A8379C00CF637D /* MainMenu.xib */; };
@@ -25,7 +25,7 @@
 		F490560320A8383400CF637D /* HTTPURLResponseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F490560220A8383400CF637D /* HTTPURLResponseExtension.swift */; };
 		F490560520A8383A00CF637D /* URLCacheExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F490560420A8383A00CF637D /* URLCacheExtension.swift */; };
 		F490560720A8385200CF637D /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = F490560620A8385200CF637D /* Future.swift */; };
-		F490566E20A9CD7000CF637D /* CurlEasyWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = F49055C120A7BE5400CF637D /* CurlEasyWrapper.m */; };
+		F490566E20A9CD7000CF637D /* CurlWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = F49055C120A7BE5400CF637D /* CurlWrapper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,8 +82,8 @@
 		F49055A720A7BDE500CF637D /* NinoudeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NinoudeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F49055AC20A7BDE500CF637D /* NinoudeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NinoudeTests.swift; sourceTree = "<group>"; };
 		F49055AE20A7BDE500CF637D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F49055C120A7BE5400CF637D /* CurlEasyWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurlEasyWrapper.m; sourceTree = "<group>"; };
-		F49055C220A7BE5500CF637D /* CurlEasyWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurlEasyWrapper.h; sourceTree = "<group>"; };
+		F49055C120A7BE5400CF637D /* CurlWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurlWrapper.m; sourceTree = "<group>"; };
+		F49055C220A7BE5500CF637D /* CurlWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurlWrapper.h; sourceTree = "<group>"; };
 		F49055C620A7BE9B00CF637D /* libcurl.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcurl.tbd; path = usr/lib/libcurl.tbd; sourceTree = SDKROOT; };
 		F49055C920A7BED200CF637D /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		F49055CB20A7BED900CF637D /* Curl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Curl.swift; sourceTree = "<group>"; };
@@ -173,8 +173,8 @@
 				F490560020A8382F00CF637D /* ApplicationDirecrories.swift */,
 				F490560220A8383400CF637D /* HTTPURLResponseExtension.swift */,
 				F490560420A8383A00CF637D /* URLCacheExtension.swift */,
-				F49055C220A7BE5500CF637D /* CurlEasyWrapper.h */,
-				F49055C120A7BE5400CF637D /* CurlEasyWrapper.m */,
+				F49055C220A7BE5500CF637D /* CurlWrapper.h */,
+				F49055C120A7BE5400CF637D /* CurlWrapper.m */,
 				F49055A220A7BDE500CF637D /* Info.plist */,
 				F49055CE20A7BF3B00CF637D /* module.modulemap */,
 				F49055A120A7BDE500CF637D /* Ninoude.h */,
@@ -228,7 +228,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F49055AF20A7BDE500CF637D /* Ninoude.h in Headers */,
-				F49055D620A833A600CF637D /* CurlEasyWrapper.h in Headers */,
+				F49055D620A833A600CF637D /* CurlWrapper.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,7 +395,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F490560120A8382F00CF637D /* ApplicationDirecrories.swift in Sources */,
-				F490566E20A9CD7000CF637D /* CurlEasyWrapper.m in Sources */,
+				F490566E20A9CD7000CF637D /* CurlWrapper.m in Sources */,
 				F49055CA20A7BED200CF637D /* Result.swift in Sources */,
 				F49055FD20A8380F00CF637D /* Ninoude.swift in Sources */,
 				F49055CC20A7BED900CF637D /* Curl.swift in Sources */,

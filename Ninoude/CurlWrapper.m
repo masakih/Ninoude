@@ -1,13 +1,13 @@
 
 //
-//  CurlEasyWrapper.c
+//  CurlWrapper.c
 //  CURL
 //
 //  Created by Hori,Masaki on 2018/04/24.
 //  Copyright © 2018年 Hori,Masaki. All rights reserved.
 //
 
-#include "CurlEasyWrapper.h"
+#include "CurlWrapper.h"
 
 
 CURLcode curl_easy_setuseragent(CURL *curl, char *useragent) {
