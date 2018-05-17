@@ -11,7 +11,7 @@
 		F49055AD20A7BDE500CF637D /* NinoudeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49055AC20A7BDE500CF637D /* NinoudeTests.swift */; };
 		F49055AF20A7BDE500CF637D /* Ninoude.h in Headers */ = {isa = PBXBuildFile; fileRef = F49055A120A7BDE500CF637D /* Ninoude.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F49055CA20A7BED200CF637D /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49055C920A7BED200CF637D /* Result.swift */; };
-		F49055CC20A7BED900CF637D /* Curl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49055CB20A7BED900CF637D /* Curl.swift */; };
+		F49055CC20A7BED900CF637D /* Chikarakobu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49055CB20A7BED900CF637D /* Chikarakobu.swift */; };
 		F49055D620A833A600CF637D /* CurlWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = F49055C220A7BE5500CF637D /* CurlWrapper.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		F49055DE20A8379B00CF637D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49055DD20A8379B00CF637D /* AppDelegate.swift */; };
 		F49055E020A8379C00CF637D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F49055DF20A8379C00CF637D /* Assets.xcassets */; };
@@ -86,7 +86,7 @@
 		F49055C220A7BE5500CF637D /* CurlWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurlWrapper.h; sourceTree = "<group>"; };
 		F49055C620A7BE9B00CF637D /* libcurl.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcurl.tbd; path = usr/lib/libcurl.tbd; sourceTree = SDKROOT; };
 		F49055C920A7BED200CF637D /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
-		F49055CB20A7BED900CF637D /* Curl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Curl.swift; sourceTree = "<group>"; };
+		F49055CB20A7BED900CF637D /* Chikarakobu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chikarakobu.swift; sourceTree = "<group>"; };
 		F49055CE20A7BF3B00CF637D /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		F49055DB20A8379A00CF637D /* TestApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F49055DD20A8379B00CF637D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -166,7 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				F49055FC20A8380E00CF637D /* Ninoude.swift */,
-				F49055CB20A7BED900CF637D /* Curl.swift */,
+				F49055CB20A7BED900CF637D /* Chikarakobu.swift */,
 				F49055FE20A8382900CF637D /* Response.swift */,
 				F49055C920A7BED200CF637D /* Result.swift */,
 				F490560620A8385200CF637D /* Future.swift */,
@@ -398,7 +398,7 @@
 				F490566E20A9CD7000CF637D /* CurlWrapper.m in Sources */,
 				F49055CA20A7BED200CF637D /* Result.swift in Sources */,
 				F49055FD20A8380F00CF637D /* Ninoude.swift in Sources */,
-				F49055CC20A7BED900CF637D /* Curl.swift in Sources */,
+				F49055CC20A7BED900CF637D /* Chikarakobu.swift in Sources */,
 				F49055FF20A8382900CF637D /* Response.swift in Sources */,
 				F490560720A8385200CF637D /* Future.swift in Sources */,
 				F490560520A8383A00CF637D /* URLCacheExtension.swift in Sources */,

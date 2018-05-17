@@ -122,9 +122,9 @@ public class Ninoude {
                 .flatMap(transform: self.redirectIfNeeds(response:))
         }
         
-        Curl.userAgent = type(of: self).userAgent
+        Chikarakobu.userAgent = type(of: self).userAgent
         
-        let curl = Curl()
+        let curl = Chikarakobu()
         curl.url = request.url
         curl.method = request.httpMethod
         curl.headers = request.allHTTPHeaderFields

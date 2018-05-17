@@ -1,5 +1,5 @@
 //
-//  Curl.swift
+//  Chikarakobu.swift
 //  CURL
 //
 //  Created by Hori,Masaki on 2018/04/24.
@@ -21,7 +21,7 @@ enum CurlError: Error {
 }
 
 
-class Curl {
+class Chikarakobu {
     
     class WriteData {
         
@@ -233,7 +233,7 @@ func writeData(rawData: UnsafeMutablePointer<Int8>?, unitSize: Int, unitCount: I
         return 0
     }
     
-    guard let data = stream?.load(as: Curl.WriteData.self) else {
+    guard let data = stream?.load(as: Chikarakobu.WriteData.self) else {
         
         return 0
     }
