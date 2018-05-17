@@ -68,7 +68,7 @@ class Curl {
                 return
             }
             
-            curl_easy_seturl(curl, &urlString)
+            CWSetUrl(curl, &urlString)
         }
     }
     
@@ -81,7 +81,7 @@ class Curl {
                 return
             }
             
-            curl_easy_settimeout(curl, Int(timeout))
+            CWSetTimeout(curl, Int(timeout))
         }
     }
     
@@ -97,13 +97,13 @@ class Curl {
             switch method {
                 
             case "GET":
-                curl_easy_setmethod(curl, GET)
+                CWSetMethod(curl, GET)
                 
             case "POST":
-                curl_easy_setmethod(curl, POST)
+                CWSetMethod(curl, POST)
                 
             case "PUT":
-                curl_easy_setmethod(curl, PUT)
+                CWSetMethod(curl, PUT)
                 
             default:
                 print("Method unknown", method)
@@ -124,7 +124,7 @@ class Curl {
             
             let slist: UnsafeMutablePointer<curl_slist>? = nil
             let list = h.reduce(slist) { curl_slist_append($0, $1) }
-            curl_easy_setHeaders(curl, list)
+            CWSetHeaders(curl, list)
             
             // TODO: list leaked
         }
@@ -136,7 +136,7 @@ class Curl {
             
             guard body != nil else {
                 
-                curl_easy_setbody(curl, nil)
+                CWSetBody(curl, nil)
                 
                 return
             }
@@ -148,7 +148,7 @@ class Curl {
                 return
             }
             
-            curl_easy_setbody(curl, &bodyString)
+            CWSetBody(curl, &bodyString)
         }
     }
     
@@ -168,7 +168,7 @@ class Curl {
                 return
             }
             
-            curl_easy_setcookiefile(curl, &pathString)
+            CWSetCookieFile(curl, &pathString)
         }
     }
     
@@ -190,16 +190,16 @@ class Curl {
         
         if var ua = userAgent() {
         
-            curl_easy_setuseragent(curl, &ua)
+            CWSetUseragent(curl, &ua)
         }
         
         var headerData = WriteData()
-        curl_easy_setheaderdata(curl, &headerData)
-        curl_easy_setwriteheaderfunc(curl, writeData)
+        CWSetHeaderData(curl, &headerData)
+        CWSetWriteHeaderFunc(curl, writeData)
         
         var bodyData = WriteData()
-        curl_easy_setdata(curl, &bodyData)
-        curl_easy_setwritefunc(curl, writeData)
+        CWSetData(curl, &bodyData)
+        CWSetWriteFunc(curl, writeData)
         
         let result = curl_easy_perform(curl)
         
