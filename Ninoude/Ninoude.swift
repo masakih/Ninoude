@@ -85,25 +85,12 @@ public class Ninoude {
     
     private func redirectURL(from original: URL, for location: String) -> URL? {
         
-        if location.hasPrefix("http"),
-            let url = URL(string: location) {
+        if location.hasPrefix("http") {
             
-            return url
+            return URL(string: location)
         }
         
-        if location.hasPrefix("/") {
-            
-            var newURL = original
-            let paths = newURL.pathComponents
-            
-            (1..<paths.count).forEach { _ in newURL.deleteLastPathComponent() }
-            
-            newURL.appendPathComponent(String(location.dropFirst()))
-            
-            return newURL
-        }
-        
-        return URL(string: location, relativeTo: original)
+        return URL(string: location, relativeTo: original)?.standardized.absoluteURL
     }
     
     private func redirectIfNeeds(response: Response) -> Result<Response> {
