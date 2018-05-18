@@ -95,14 +95,19 @@ public class Ninoude {
     
     private func redirectIfNeeds(response: Response) -> Result<Response> {
         
+        guard let redirecetResponse = response.response else {
+            
+            fatalError("Redirect response has no response.")
+        }
+        
         if self.isRedirect(response: response),
-            let newLocation = response.response?.allHeaderFields["Location"] as? String,
+            let newLocation = redirecetResponse.allHeaderFields["Location"] as? String,
             let originalURL = response.request?.url,
             let newURL = redirectURL(from: originalURL, for: newLocation) {
             
             let newRequest = URLRequest(url: newURL)
             
-            redirectFunctions.forEach { $0(newRequest, response.response!) }
+            redirectFunctions.forEach { $0(newRequest, redirecetResponse) }
             
             return self.response(for: newRequest)
         }
